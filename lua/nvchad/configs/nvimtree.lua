@@ -7,8 +7,9 @@ return {
   sync_root_with_cwd = true,
   update_focused_file = {
     enable = true,
-    update_root = false,
+    update_root = true,  -- Ensure this is set to true to update root
   },
+  update_cwd = true,  -- Ensure this is enabled to sync cwd with the file tree
   view = {
     width = 30,
     preserve_window_proportions = true,
