@@ -6,7 +6,7 @@ local function quit()
 
   -- check if nvimtree is open and close it 
   local ok, nvimtreeapi = pcall(require, "nvim-tree.api")
-  if ok and nvimtreeapi.is_visible() then
+  if ok and nvimtreeapi.tree.is_visible() then
     nvimtreeapi.tree.close()
   end
 
