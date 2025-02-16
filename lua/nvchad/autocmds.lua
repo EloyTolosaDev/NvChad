@@ -1,5 +1,14 @@
 local autocmd = vim.api.nvim_create_autocmd
 
+autocmd("VimEnter", {
+  callback = function()
+    vim.defer_fn(function()
+      vim.cmd("Lazy sync")
+    end
+    , 100)
+  end,
+})
+
 -- user event that loads after UIEnter + only if file buf is there
 autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
   group = vim.api.nvim_create_augroup("NvFilePost", { clear = true }),
