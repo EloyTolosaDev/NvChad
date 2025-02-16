@@ -1,5 +1,19 @@
 local map = vim.keymap.set
 
+-- quit nvim fast
+local quit function ()
+  vim.cmd("wa")
+
+  -- check if nvimtree is open and close it 
+  local ok, nvimtree-api = pcall(require, "nvim-tree.api")
+  if ok and nvimtree-api.is_visible() then
+    nvimtree-api.tree.close()
+  end
+
+  vim.cmd("qa")
+end
+map("n", "<leader>qq", quit, "Save work, close all buffers, close nvimtree and quit nvim")
+
 map("i", "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
 map("i", "<C-e>", "<End>", { desc = "move end of line" })
 map("i", "<C-h>", "<Left>", { desc = "move left" })

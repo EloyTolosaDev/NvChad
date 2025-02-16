@@ -6,7 +6,14 @@ local g = vim.g
 o.laststatus = 3
 o.showmode = false
 
+-- clipboard (for windows and linux)
 o.clipboard = "unnamedplus"
+g.clipboard = {
+  name = "WSL clipboard",
+  copy = {["+"] = "clip.exe", ["*"] = "clip.exe"},
+  paste = { ["+"] = "powershell.exe --command 'GetClipboard'", ["*"] = "powershell.exe --command 'GetClipboard'" }
+}
+
 o.cursorline = true
 o.cursorlineopt = "number"
 
