@@ -167,5 +167,5 @@ return {
     end,
   },
 
-  require "clipboard"
+  require "nvchad.configs.clipboard"
 }
