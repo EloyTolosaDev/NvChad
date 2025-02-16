@@ -1,7 +1,7 @@
 local map = vim.keymap.set
 
 -- quit nvim fast
-local quit function ()
+local function quit()
   vim.cmd("wa")
 
   -- check if nvimtree is open and close it 
