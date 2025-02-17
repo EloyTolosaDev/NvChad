@@ -4,7 +4,7 @@ return {
   filters = { dotfiles = false },
   disable_netrw = true,
   hijack_cursor = true,
-  -- sync_root_with_cwd = true,
+  sync_root_with_cwd = true,
   update_focused_file = {
     enable = true,
     update_root = true,  -- Ensure this is set to true to update root

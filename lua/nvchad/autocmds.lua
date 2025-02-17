@@ -1,5 +1,20 @@
 local autocmd = vim.api.nvim_create_autocmd
 
+-- Automatically set cwd when opening a directory using nvim
+vim.api.nvim_create_augroup("NvimTreeAutoCwd", { clear = true })
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  group = "NvimTreeAutoCwd",
+  callback = function()
+    local argv = vim.fn.argv(0)  -- Get the first argument passed to Neovim
+    if vim.fn.argc() == 1 and vim.fn.isdirectory(argv) == 1 then
+      vim.cmd("cd " .. vim.fn.fnameescape(argv))  -- Change to the directory safely
+      require("nvim-tree.api").tree.open()  -- Open NvimTree
+    end
+  end,
+})
+
+
 -- Automatically open nvim-tree for the directory passed in `nvim .`
 autocmd("VimEnter", {
   callback=function()
