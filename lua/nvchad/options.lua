@@ -10,6 +10,8 @@ vim.env.GREP_OPTIONS = "--color=never"  -- Force grep to output plain text
 vim.env.CLICOLOR_FORCE = "0"       -- Prevent forced colorization
 vim.env.TERM = "dumb"              -- Trick programs into disabling color
 
+vim.opt.shellpipe = "2>&1 | sed 's/\x1b\\[[0-9;]*m//g'"
+
 o.laststatus = 3
 o.showmode = false
 
