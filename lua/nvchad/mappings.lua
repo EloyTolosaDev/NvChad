@@ -14,6 +14,8 @@ local function quit()
 end
 map("n", "<leader>qq", quit, {desc="Save work, close all buffers, close nvimtree and quit nvim"})
 
+map("n", "<leader>sync", "Lazy sync", {desc="Short for Lazy sync"})
+
 map("i", "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
 map("i", "<C-e>", "<End>", { desc = "move end of line" })
 map("i", "<C-h>", "<Left>", { desc = "move left" })
