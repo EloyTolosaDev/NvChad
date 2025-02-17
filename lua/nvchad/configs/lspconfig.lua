@@ -82,7 +82,7 @@ M.defaults = function()
   }
 end
 
-local servers = { "html", "cssls", "pyright", "terraform-ls-ls"}
+local servers = { "html", "cssls", "pyright", "terraform-ls"}
 local lspconfig = require("lspconfig")
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
