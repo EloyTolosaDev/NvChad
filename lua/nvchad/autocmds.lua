@@ -1,5 +1,12 @@
 local autocmd = vim.api.nvim_create_autocmd
 
+-- Automatically open nvim-tree for the directory passed in `nvim .`
+autocmd("VimEnter", {
+  callback=function()
+    require("nvim-tree.api").tree.open()
+  end,
+})
+
 autocmd("VimEnter", {
   callback = function()
     vim.defer_fn(function()
