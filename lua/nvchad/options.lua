@@ -1,11 +1,12 @@
 local opt = vim.opt
 local o = vim.o
 local g = vim.g
-local env = vim.env
 
 -------------------------------------- options ------------------------------------------
 
-env.NOCOLOR = 1
+o.termguicolors = true
+o.shell = "/bin/bash"
+o.shellcmdflag = "-c"
 
 o.laststatus = 3
 o.showmode = false
