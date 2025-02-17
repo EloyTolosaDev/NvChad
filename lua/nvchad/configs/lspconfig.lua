@@ -82,4 +82,15 @@ M.defaults = function()
   }
 end
 
+local servers = { "html", "cssls", "pyright", "terraform-ls-ls"}
+local lspconfig = require("lspconfig")
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
+    on_attach = M.on_attach,
+    on_init = M.on_init,
+    capabilities = M.capabilities,
+  }
+end
+
+
 return M
