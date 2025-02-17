@@ -1,8 +1,12 @@
 local opt = vim.opt
 local o = vim.o
 local g = vim.g
+local env = vim.env
 
 -------------------------------------- options ------------------------------------------
+
+env.NOCOLOR = 1
+
 o.laststatus = 3
 o.showmode = false
 
