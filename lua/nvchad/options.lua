@@ -4,14 +4,6 @@ local g = vim.g
 
 -------------------------------------- options ------------------------------------------
 
-vim.env.NO_COLOR = "1"             -- Standard way to disable colors
-vim.env.LS_COLORS = ""             -- Disable `ls` colors
-vim.env.GREP_OPTIONS = "--color=never"  -- Force grep to output plain text
-vim.env.CLICOLOR_FORCE = "0"       -- Prevent forced colorization
-vim.env.TERM = "dumb"              -- Trick programs into disabling color
-
-vim.opt.shellpipe = "2>&1 | sed 's/\x1b\\[[0-9;]*m//g'"
-
 o.laststatus = 3
 o.showmode = false
 
