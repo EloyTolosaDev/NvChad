@@ -16,7 +16,7 @@ map("n", "<leader>qq", quit, {desc="Save work, close all buffers, close nvimtree
 
 map("n", "<leader>sync", "<cmd>Lazy sync<CR>", {desc="Short for Lazy sync"})
 map("n", "<leader>ga", "<cmd>Git add .<CR>", {desc="Making my life easier with git"})
-map("n", "<leader>gcom", "<cmd>Git commit -m \"", {desc="Making my life easier with git"})
+map("n", "<leader>gcom", ":Git commit -m \"", {desc="Making my life easier with git"})
 
 map("i", "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
 map("i", "<C-e>", "<End>", { desc = "move end of line" })
