@@ -14,6 +14,8 @@ local function quit()
 end
 map("n", "<leader>qq", quit, {desc="Save work, close all buffers, close nvimtree and quit nvim"})
 
+map("n", "<C-Space>", ":", {desc="Make ctrl+Space be the command similar to my custom mappings for tmux"})
+
 map("n", "<leader>sync", "<cmd>Lazy sync<CR>", {desc="Short for Lazy sync"})
 map("n", "<leader>ga", "<cmd>Git add .<CR>", {desc="Making my life easier with git"})
 map("n", "<leader>gcom", ":Git commit -m \"", {desc="Making my life easier with git"})
