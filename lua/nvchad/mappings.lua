@@ -15,11 +15,10 @@ local function quit()
 end
 map("n", "<leader>qq", quit, { desc = "Save work, close all buffers, close nvimtree and quit nvim" })
 
--- unmap gx and use my new custom mapping
-unmap("n", "gx")
 -- Function to substitute 'gx'
 local function openuri()
-  local word = vim.fn.expand('<cword>')  -- Get the word under the cursor
+  vim.cmd("normal! viW")
+  local word = vim.fn.getreg('"')
   local is_url = word:match('^https?://') -- Check if it's an HTTP/HTTPS URL
   local is_file = vim.fn.filereadable(word) == 1  -- Check if it's a valid file path
   
