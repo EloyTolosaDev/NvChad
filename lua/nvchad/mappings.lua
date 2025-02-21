@@ -17,11 +17,7 @@ map("n", "<leader>qq", quit, { desc = "Save work, close all buffers, close nvimt
 
 -- Function to substitute 'gx'
 local function openuri()
-  vim.cmd("normal! viW")
-  local word = vim.fn.getreg('"')
-
-  print("Selected word: " .. word)
-
+  local word = vim.fn.expand("<cWORD>")
   local is_url = word:match('^[a-zA-Z][a-zA-Z0-9+.-]*://.+')
   local is_file = vim.fn.filereadable(word) == 1
 
