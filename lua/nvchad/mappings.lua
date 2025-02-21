@@ -1,26 +1,48 @@
 local map = vim.keymap.set
+local unmap = vim.keymap.del
 
 -- quit nvim fast
 local function quit()
-  vim.cmd("wa")
+  vim.cmd "wa"
 
-  -- check if nvimtree is open and close it 
+  -- check if nvimtree is open and close it
   local ok, nvimtreeapi = pcall(require, "nvim-tree.api")
   if ok and nvimtreeapi.tree.is_visible() then
     nvimtreeapi.tree.close()
   end
 
-  vim.cmd("qa")
+  vim.cmd "qa"
 end
-map("n", "<leader>qq", quit, {desc="Save work, close all buffers, close nvimtree and quit nvim"})
+map("n", "<leader>qq", quit, { desc = "Save work, close all buffers, close nvimtree and quit nvim" })
+
+-- unmap gx and use my new custom mapping
+unmap("n", "gx")
+-- Function to substitute 'gx'
+local function openuri()
+  local word = vim.fn.expand('<cword>')  -- Get the word under the cursor
+  local is_url = word:match('^https?://') -- Check if it's an HTTP/HTTPS URL
+  local is_file = vim.fn.filereadable(word) == 1  -- Check if it's a valid file path
+  
+  if is_url then
+    -- Open URL in Firefox in private mode
+    vim.fn.system({'firefox', '--private-window', word})
+  elseif is_file then
+    -- Open file in a new tab in Neovim
+    vim.cmd('tabnew ' .. word)
+  else
+    -- If it's neither a URL nor a valid file, show an error message
+    print("Not a valid file or URL.")
+  end
+end
+map("n", "gx", openuri, {desc="Open the URI with the desired program. If its an URL open with Firefox, if its a FilePath use nvim"})
 
 -- make C-d and C-u center the screen afterwards
-map("n", "<C-d>", "<C-d>zz", {desc="Same as C-d but it centers the screen afterwards"})
-map("n", "<C-u>", "<C-u>zz", {desc="Same as C-u but it centers the screen afterwards"})
+map("n", "<C-d>", "<C-d>zz", { desc = "Same as C-d but it centers the screen afterwards" })
+map("n", "<C-u>", "<C-u>zz", { desc = "Same as C-u but it centers the screen afterwards" })
 
-map("n", "<leader>sync", "<cmd>Lazy sync<CR>", {desc="Short for 'Lazy sync'"})
-map("n", "<leader>ga", "<cmd>Git add .<CR>", {desc="Short for 'Git add .'"})
-map("n", "<leader>gcom", ":Git commit -m \"", {desc="Short for 'Git commit' and enter the message"})
+map("n", "<leader>sync", "<cmd>Lazy sync<CR>", { desc = "Short for 'Lazy sync'" })
+map("n", "<leader>ga", "<cmd>Git add .<CR>", { desc = "Short for 'Git add .'" })
+map("n", "<leader>gcom", ':Git commit -m "', { desc = "Short for 'Git commit' and enter the message" })
 
 map("i", "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
 map("i", "<C-e>", "<End>", { desc = "move end of line" })
@@ -53,13 +75,16 @@ map("n", "<leader>ds", vim.diagnostic.setloclist, { desc = "LSP diagnostic locli
 -- tabufline
 map("n", "<leader>b", "<cmd>enew<CR>", { desc = "buffer new" })
 
-map("n", "<tab>", function()
-  require("nvchad.tabufline").next()
-end, { desc = "buffer goto next" })
 
-map("n", "<S-tab>", function()
-  require("nvchad.tabufline").prev()
-end, { desc = "buffer goto prev" })
+-- navigate through tabs
+
+-- map("n", "<tab>", function()
+--   require("nvchad.tabufline").next()
+-- end, { desc = "buffer goto next" })
+--
+-- map("n", "<S-tab>", function()
+--   require("nvchad.tabufline").prev()
+-- end, { desc = "buffer goto prev" })
 
 map("n", "<leader>x", function()
   require("nvchad.tabufline").close_buffer()
