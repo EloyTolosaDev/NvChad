@@ -19,8 +19,9 @@ map("n", "<leader>qq", quit, { desc = "Save work, close all buffers, close nvimt
 local function openuri()
   vim.cmd("normal! viW")
   local word = vim.fn.getreg('"')
-  local is_url = word:match('^https?://') -- Check if it's an HTTP/HTTPS URL
-  local is_file = vim.fn.filereadable(word) == 1  -- Check if it's a valid file path
+  vim.cmd("normal! <Esc>")
+  local is_url = word:match('^[a-zA-Z][a-zA-Z0-9+.-]*://')
+  local is_file = vim.fn.filereadable(word) == 1
   
   if is_url then
     -- Open URL in Firefox in private mode
