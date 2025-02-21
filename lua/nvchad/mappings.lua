@@ -32,7 +32,7 @@ local function openuri()
     open_firefox_from_wsl(word)
   elseif is_file then
     -- Open file in a new tab in Neovim
-    vim.cmd('tabnew ' .. word)
+    vim.cmd('e ' .. word)
   else
     -- If it's neither a URL nor a valid file, show an error message
     print("Not a valid file or URL.")
