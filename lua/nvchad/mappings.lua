@@ -1,5 +1,5 @@
 local map = vim.keymap.set
-local unmap = vim.keymap.del
+local unmap = vim.api.nvim_del_keymap
 
 -- quit nvim fast
 local function quit()
@@ -15,6 +15,7 @@ local function quit()
 end
 map("n", "<leader>qq", quit, { desc = "Save work, close all buffers, close nvimtree and quit nvim" })
 
+unmap("n", "gx")
 -- Function to substitute 'gx'
 local function openuri()
   local word = vim.fn.expand("<cWORD>")
