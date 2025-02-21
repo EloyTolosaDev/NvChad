@@ -23,21 +23,19 @@ end
 
 -- Function to substitute 'gx'
 local function openuri()
-  local word = vim.fn.expand("<cWORD>")
+  local word = vim.fn.expand(vim.fn.expand("<cWORD>"))
   local is_url = word:match('^[a-zA-Z][a-zA-Z0-9+.-]*://.+')
   local is_file = vim.fn.filereadable(word) == 1
 
-  print(word)
-
   if is_url then
     -- Open URL in Firefox in private mode
-    -- open_firefox_from_wsl(word)
+    open_firefox_from_wsl(word)
   elseif is_file then
     -- Open file in a new tab in Neovim
-    -- vim.cmd('tabnew ' .. word)
+    vim.cmd('tabnew ' .. word)
   else
     -- If it's neither a URL nor a valid file, show an error message
-    -- print("Not a valid file or URL.")
+    print("Not a valid file or URL.")
   end
 end
 
