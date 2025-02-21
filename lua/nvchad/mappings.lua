@@ -19,9 +19,12 @@ map("n", "<leader>qq", quit, { desc = "Save work, close all buffers, close nvimt
 local function openuri()
   vim.cmd("normal! viW")
   local word = vim.fn.getreg('"')
+
+  print("Selected word: " .. word)
+
   local is_url = word:match('^[a-zA-Z][a-zA-Z0-9+.-]*://.+')
   local is_file = vim.fn.filereadable(word) == 1
-  
+
   if is_url then
     -- Open URL in Firefox in private mode
     vim.fn.system({'firefox', '--private-window', word})
