@@ -14,11 +14,13 @@ local function quit()
 end
 map("n", "<leader>qq", quit, {desc="Save work, close all buffers, close nvimtree and quit nvim"})
 
-map("n", "<C-Space>", ":", {desc="Make ctrl+Space be the command similar to my custom mappings for tmux"})
+-- make C-d and C-u center the screen afterwards
+map("n", "<C-d>", "<C-d>zz", {desc="Same as C-d but it centers the screen afterwards"})
+map("n", "<C-u>", "<C-u>zz", {desc="Same as C-u but it centers the screen afterwards"})
 
-map("n", "<leader>sync", "<cmd>Lazy sync<CR>", {desc="Short for Lazy sync"})
-map("n", "<leader>ga", "<cmd>Git add .<CR>", {desc="Making my life easier with git"})
-map("n", "<leader>gcom", ":Git commit -m \"", {desc="Making my life easier with git"})
+map("n", "<leader>sync", "<cmd>Lazy sync<CR>", {desc="Short for 'Lazy sync'"})
+map("n", "<leader>ga", "<cmd>Git add .<CR>", {desc="Short for 'Git add .'"})
+map("n", "<leader>gcom", ":Git commit -m \"", {desc="Short for 'Git commit' and enter the message"})
 
 map("i", "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
 map("i", "<C-e>", "<End>", { desc = "move end of line" })
