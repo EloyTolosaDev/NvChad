@@ -16,6 +16,11 @@ end
 map("n", "<leader>qq", quit, { desc = "Save work, close all buffers, close nvimtree and quit nvim" })
 
 unmap("n", "gx")
+local function open_firefox_from_wsl(url)
+  local command = 'cmd.exe /C start firefox --private-window "' .. url .. '"'
+  vim.fn.system(command)
+end
+
 -- Function to substitute 'gx'
 local function openuri()
   local word = vim.fn.expand("<cWORD>")
@@ -24,8 +29,7 @@ local function openuri()
 
   if is_url then
     -- Open URL in Firefox in private mode
-    local firefoxWsl = "/mnt/c/Program\\ Files/Mozilla\\ Firefox/firefox.exe"
-    vim.fn.system({firefoxWsl, '--private-window', word})
+    open_firefox_from_wsl(word)
   elseif is_file then
     -- Open file in a new tab in Neovim
     vim.cmd('tabnew ' .. word)
