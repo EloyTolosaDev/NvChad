@@ -24,7 +24,8 @@ local function openuri()
 
   if is_url then
     -- Open URL in Firefox in private mode
-    vim.fn.system({'firefox', '--private-window', word})
+    local firefoxWsl = "/mnt/c/Program\\ Files/Mozilla\\ Firefox/firefox.exe"
+    vim.fn.system({firefoxWsl, '--private-window', word})
   elseif is_file then
     -- Open file in a new tab in Neovim
     vim.cmd('tabnew ' .. word)
