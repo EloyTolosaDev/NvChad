@@ -43,8 +43,8 @@ end
 map("n", "gx", openuri, {desc="Open the URI with the desired program. If its an URL open with Firefox, if its a FilePath use nvim"})
 
 local escapeDesc = "Escape insert mode using ii or II"
-map("n", "ii", "<Esc>", {desc=escapeDesc})
-map("n", "II", "<Esc>", {desc=escapeDesc})
+map("i", "ii", "<Esc>", {desc=escapeDesc})
+map("i", "II", "<Esc>", {desc=escapeDesc})
 
 -- make C-d and C-u center the screen afterwards
 map("n", "<leader>sync", "<cmd>Lazy sync<CR>", { desc = "Short for 'Lazy sync'" })
