@@ -4,11 +4,15 @@ local g = vim.g
 
 -------------------------------------- options ------------------------------------------
 
+-- clipboard (for windows and linux)
+vim.opt.clipboard = 'unnamedplus'
+
+-- line number and relative number
+vim.opt.number = true
+vim.opt.relativenumber = true
+
 o.laststatus = 3
 o.showmode = false
-
--- clipboard (for windows and linux)
-o.clipboard = "unnamedplus"
 
 o.cursorline = true
 o.cursorlineopt = "number"
