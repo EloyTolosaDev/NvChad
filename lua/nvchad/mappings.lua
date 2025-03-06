@@ -46,8 +46,12 @@ local escapeDesc = "Escape insert mode using ii or II"
 map("i", "ii", "<Esc>", {desc=escapeDesc})
 map("i", "II", "<Esc>", {desc=escapeDesc})
 
--- make C-d and C-u center the screen afterwards
+-- lazy sync fast
 map("n", "<leader>sync", "<cmd>Lazy sync<CR>", { desc = "Short for 'Lazy sync'" })
+
+-- fast add and commit for git
+map("n", "<leader>gp", ':!git add . && git commit -m "" && git push')
+
 map("n", "<leader>ga", "<cmd>Git add .<CR>", { desc = "Short for 'Git add .'" })
 map("n", "<leader>gcom", ':Git commit -m "', { desc = "Short for 'Git commit' and enter the message" })
 -- make C-d and C-u center the screen afterwards
