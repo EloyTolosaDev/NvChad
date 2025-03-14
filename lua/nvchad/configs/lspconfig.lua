@@ -82,7 +82,8 @@ M.defaults = function()
   }
 end
 
-local servers = { "html", "cssls", "pyright"}
+local util = require("lspconfig.util")
+local servers = { "html", "cssls" }
 local lspconfig = require("lspconfig")
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -91,6 +92,18 @@ for _, lsp in ipairs(servers) do
     capabilities = M.capabilities,
   }
 end
+
+
+lspconfig.pyright.setup {
+    on_attach = M.on_attach,
+    on_init = M.on_init,
+    capabilities = M.capabilities,
+    root_dir = function(fname)
+      return util.find_git_ancestor(fname) -- First, look for a `.git/` folder
+          or util.root_pattern("pyproject.toml", "setup.py", "requirements.txt", "pyrightconfig.json")(fname) -- 2 Secific project files
+          or util.path.dirname(fname) -- 3 a last resort, use the directory of the current file
+    end,
+}
 
 lspconfig.terraformls.setup {
     on_attach = M.on_attach,

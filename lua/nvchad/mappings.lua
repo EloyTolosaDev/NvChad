@@ -49,8 +49,6 @@ map("i", "II", "<Esc>", {desc=escapeDesc})
 -- lazy sync fast
 map("n", "<leader>sync", "<cmd>Lazy sync<CR>", { desc = "Short for 'Lazy sync'" })
 
--- quick markdown preview
-map("n", "<lader>md", "<cmd>MarkdownPreview<CR>", {desc="Quick preview markdown file"})
 
 -- fast add and commit for git
 map("n", "<leader>gp", ':!git add . && git commit -m "" && git push')
