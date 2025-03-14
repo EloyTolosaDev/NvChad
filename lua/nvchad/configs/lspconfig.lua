@@ -100,7 +100,7 @@ lspconfig.pyright.setup {
     capabilities = M.capabilities,
     root_dir = function(fname)
       return util.find_git_ancestor(fname) -- First, look for a `.git/` folder
-          or util.root_pattern("pyproject.toml", "setup.py", "requirements.txt", "pyrightconfig.json")(fname) -- 2 Secific project files
+          or util.root_pattern("pyproject.toml", "setup.py", "requirements.txt", "pyrightconfig.json", ".venv")(fname) -- 2 Secific project files
           or util.path.dirname(fname) -- 3 a last resort, use the directory of the current file
     end,
 }
