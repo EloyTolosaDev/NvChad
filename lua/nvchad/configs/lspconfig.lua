@@ -111,4 +111,10 @@ lspconfig.terraformls.setup {
     capabilities = M.capabilities,
 }
 
+lspconfig.deno.setup {
+    on_attach = M.on_attach,
+    on_init = M.on_init,
+    capabilities = M.capabilities,
+}
+
 return M
