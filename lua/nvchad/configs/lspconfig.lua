@@ -85,6 +85,7 @@ end
 local util = require("lspconfig.util")
 local servers = { "html", "cssls" }
 local lspconfig = require("lspconfig")
+
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = M.on_attach,

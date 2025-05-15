@@ -39,6 +39,10 @@ local function openuri()
   end
 end
 
+-- Shift-H and shift-L to navigate through buffers
+map('n', 'H', ':bprevious<CR>', { noremap = true, silent = true })
+map('n', 'L', ':bnext<CR>', { noremap = true, silent = true })
+
 -- open files and links from neovim using gx
 map("n", "gx", openuri, {desc="Open the URI with the desired program. If its an URL open with Firefox, if its a FilePath use nvim"})
 
