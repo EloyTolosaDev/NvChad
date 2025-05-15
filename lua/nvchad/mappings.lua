@@ -39,6 +39,15 @@ local function openuri()
   end
 end
 
+-- Keep things after deleting, yanking or pasting
+vim.keymap.set("n", "d", '"ad', { noremap = true, desc = "Delete into register a" })
+vim.keymap.set("n", "y", '"ay', { noremap = true, desc = "Yank into register a" })
+vim.keymap.set("n", "p", '"ap', { noremap = true, desc = "Paste from register a" })
+
+vim.keymap.set("v", "d", '"ad', { noremap = true, desc = "Delete into register a" })
+vim.keymap.set("v", "y", '"ay', { noremap = true, desc = "Yank into register a" })
+vim.keymap.set("v", "p", '"ap', { noremap = true, desc = "Paste from register a" })
+
 -- Shift-H and shift-L to navigate through buffers
 map('n', 'H', ':bprevious<CR>', { noremap = true, silent = true })
 map('n', 'L', ':bnext<CR>', { noremap = true, silent = true })
